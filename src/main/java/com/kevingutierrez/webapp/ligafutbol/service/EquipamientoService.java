@@ -39,7 +39,7 @@ public class EquipamientoService implements IEquipamientoService {
         List<Equipamiento> equipamientos = listarEquipamientos();
         int contador = 0;
         for (Equipamiento e : equipamientos) {
-            if (e.getEquipo().getId().equals(equipamiento.getEquipo().getId())) {
+            if (e.getEquipo().getId().equals(equipamiento.getEquipo().getId()) && !e.getId().equals(equipamiento.getId())) {
                 contador++;
             }
             if (contador >= 3) {
