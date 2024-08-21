@@ -29,20 +29,40 @@ public class EquipamientoController {
     EquipamientoService equipamientoService;
 
     @GetMapping("/equipamientos")
-    public ResponseEntity<List<Equipamiento>> listarEquipamientos(){
+    public ResponseEntity<?> listarEquipamientos(){
+        Map<String, String> response = new HashMap<>();
         try {
-            return ResponseEntity.ok(equipamientoService.listarEquipamientos());
+            List<Equipamiento> equipamiento = equipamientoService.listarEquipamientos();
+            if (!equipamiento.isEmpty()) {
+                return ResponseEntity.ok(equipamientoService.listarEquipamientos());
+            }else{
+                response.put("message", "Error");
+                response.put("err", "No se encontro la lista Equipamientos");
+                return ResponseEntity.badRequest().body(response);
+            }
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(null);
+                response.put("message", "Error");
+                response.put("err", "No se encontro la lista Equipamientos");
+                return ResponseEntity.badRequest().body(response);
         }
     }
 
     @GetMapping("/equipamiento")
-    public ResponseEntity<Equipamiento> buscarEquipamientoPorId(@RequestParam Long id){
+    public ResponseEntity<?> buscarEquipamientoPorId(@RequestParam Long id){
+        Map<String, String> response = new HashMap<>();
         try {
-            return ResponseEntity.ok(equipamientoService.buscarEquipamientoPorId(id));
+            Equipamiento equipamiento = equipamientoService.buscarEquipamientoPorId(id);
+            if (equipamiento != null ) {
+                return ResponseEntity.ok(equipamiento);
+            } else {
+                response.put("message", "Error");
+                response.put("err", "No se encontro ningun Equipamiento");
+                return ResponseEntity.badRequest().body(response);
+            }
         } catch (Exception e) {
-           return ResponseEntity.badRequest().body(null);
+            response.put("message", "Error");
+            response.put("err", "No se encontro ningun Equipamiento");
+            return ResponseEntity.badRequest().body(response);
         }
 
     }
@@ -51,12 +71,15 @@ public class EquipamientoController {
     public ResponseEntity<Map<String, String>> agregarEquipamiento(@RequestParam(value = "escudo", required = false) MultipartFile escudo, @RequestBody Equipamiento equipamiento){
         Map<String, String> response = new HashMap<>();
         try {
-            if (escudo != null && !escudo.isEmpty()) {
-                equipamiento.setEscudo(escudo.getBytes()); 
+            if (!equipamientoService.verificarEquipamientosPorEquipo(equipamiento)) {
+                equipamientoService.guardarEquipamiento(equipamiento);
+                response.put("message", "Equipamiento creado!!");
+                return ResponseEntity.ok(response);
+            } else {
+                response.put("message", "Error");
+                response.put("err", "Hubo un error maximo de equipamientos alcanzado");
+                return ResponseEntity.badRequest().body(response);
             }
-            equipamientoService.guardarEquipamiento(equipamiento);
-            response.put("message", "Equipamiento creado!!");
-            return ResponseEntity.ok(response);
         } catch (Exception e) {
             response.put("message", "Error");
             response.put("err", "Hubo un error al crear el Equipamiento");
@@ -70,14 +93,19 @@ public class EquipamientoController {
         Map<String, String> response = new HashMap<>();
         try {
             Equipamiento equipamiento = equipamientoService.buscarEquipamientoPorId(id);
-            if (escudo != null && !escudo.isEmpty()) {
-                equipamiento.setEscudo(escudo.getBytes());
-            }
             equipamiento.setColor(equipamientoNuevo.getColor());
+            equipamiento.setEscudo(equipamientoNuevo.getEscudo());
             equipamiento.setPatrocinador(equipamientoNuevo.getPatrocinador());
+            equipamiento.setEquipo(equipamientoNuevo.getEquipo());
+            if(!equipamientoService.verificarEquipamientosPorEquipo(equipamiento)){
             equipamientoService.guardarEquipamiento(equipamiento);
             response.put("message", "Equipamiento modicado !!");
             return ResponseEntity.ok(response);
+            }else{
+                response.put("message", "Error");
+                response.put("err", "Hubo un error maximo de equipamientos alcanzado");
+                return ResponseEntity.badRequest().body(response); 
+            }
         } catch (Exception e) {
             response.put("message", "Error");
             response.put("err:", "Hubo un error al modificar el equipamiento");
