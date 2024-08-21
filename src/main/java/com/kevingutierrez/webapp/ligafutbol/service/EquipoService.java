@@ -33,4 +33,21 @@ public class EquipoService implements IEquipoService{
         equipoRepository.delete(equipo);
     }
 
+    @Override
+    public Boolean verficarAforo(Equipo equipo) {
+        Boolean flag = Boolean.FALSE;
+        Long aforo = equipo.getAforo();
+        try {
+            if (aforo >= 2000 && aforo <= 100000) {
+                flag = Boolean.TRUE;
+            }
+        } catch (Exception e) {
+            flag = Boolean.FALSE;
+        }   
+        return flag;     
+        
+    }
+
+    
+
 }

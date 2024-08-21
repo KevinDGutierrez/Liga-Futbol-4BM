@@ -68,9 +68,15 @@ public class EquipoController {
     public ResponseEntity<Map<String, String>> agregarEquipo(@RequestBody Equipo equipo){
         Map<String, String> response = new HashMap<>();
         try {
+               if (equipoService.verficarAforo(equipo)) {
                 equipoService.guardarEquipo(equipo);
                 response.put("message", "Equipo creado con éxito");
                 return ResponseEntity.ok(response);
+               } else {
+                response.put("message", "Error");
+                response.put("err", "el aforo no cumple con la cantidad de personas permitida");
+                return ResponseEntity.badRequest().body(response);
+               }
         } catch (Exception e) {
             response.put("message", "Error");
             response.put("err", "Hubo un error al crear el equipo");
@@ -87,9 +93,16 @@ public class EquipoController {
             equipo.setEstadio(equipoNuevo.getEstadio());
             equipo.setCiudad(equipoNuevo.getCiudad());
             equipo.setAforo(equipoNuevo.getAforo());
-            equipoService.guardarEquipo(equipo);
-            response.put("message", "Equipo modificado con éxito");
-            return ResponseEntity.ok(response);
+
+            if (equipoService.verficarAforo(equipo)) {
+                equipoService.guardarEquipo(equipo);
+                response.put("message", "Equipo modificado con éxito");
+                return ResponseEntity.ok(response);
+            } else {
+                response.put("message", "Error");
+                response.put("err", "el aforo no cumple con la cantidad de personas permitida");
+                return ResponseEntity.badRequest().body(response); 
+            }
         }catch(Exception e){
             response.put("message", "Error");
             response.put("err", "Hubo un error al modificar el equipo");
