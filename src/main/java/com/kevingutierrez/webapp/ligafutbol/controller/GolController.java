@@ -19,10 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
-
-
-
 @Controller
 @RestController
 @RequestMapping("")
@@ -32,17 +28,40 @@ public class GolController {
     GolService golService;
 
     @GetMapping("/goles")
-    public List<Gol> listarGoles() {
-        return golService.listarGoles();
+    public ResponseEntity<?> listarGoles() {
+        Map<String, String> response = new HashMap<>();
+        try {
+            List<Gol> goles = golService.listarGoles();
+            if (!goles.isEmpty()) { 
+                return ResponseEntity.ok(goles);
+            }else{
+                response.put("message", "Error");
+                response.put("err", "No se pudo listar el gol");
+                return ResponseEntity.badRequest().body(response);
+            } 
+        } catch (Exception e) {
+            response.put("message", "Error");
+            response.put("err", "Ocurrió un error al listar los goles");
+            return ResponseEntity.badRequest().body(response); 
+        }
     }
-
+    
     @GetMapping("/gol")
-    public ResponseEntity<Gol> buscarGolPorId(@RequestParam Long id) {
+    public ResponseEntity<?> buscarGolPorId(@RequestParam Long id) {
+        Map<String, String> response = new HashMap<>();
         try {
             Gol gol = golService.buscarGolPorId(id);
-            return ResponseEntity.ok(gol);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(null);
+            if (gol != null) {
+                return ResponseEntity.ok(gol);
+            }else{
+                response.put("message", "Error");
+                response.put("err", "No se pudo encontrar el Gol con el ID proporcionado");
+                return ResponseEntity.badRequest().body(response);
+            } 
+        }catch (Exception e){
+            response.put("message", "Error");
+            response.put("err", "No se encontro el gol que busco");
+            return ResponseEntity.badRequest().body(response);
         }
     }
 
