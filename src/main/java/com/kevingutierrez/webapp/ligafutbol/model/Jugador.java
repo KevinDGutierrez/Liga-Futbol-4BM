@@ -20,7 +20,5 @@ public class Jugador {
     private String dorsal;
     @ManyToOne
     private Equipo equipo;
-    @ManyToOne
-    private Gol gol;
 
 }

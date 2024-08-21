@@ -23,12 +23,12 @@ public class Patrocinador {
     private Long id;
     private String nombre;
     @Lob
-    @Column(columnDefinition = "BLOB")
-    private byte[] logo;
+    @Column(columnDefinition = "TEXT")
+    private String logo;
     @ManyToMany
     @JoinTable(name = "patrocinadores_equipos", 
     joinColumns = @JoinColumn(name = "patrocinador_id", referencedColumnName = "id"), 
     inverseJoinColumns = @JoinColumn(name = "equipos_id", referencedColumnName = "id"))
-    private List<Equipo> equipos;
+    private List<Equipo> equipo;
 
 }

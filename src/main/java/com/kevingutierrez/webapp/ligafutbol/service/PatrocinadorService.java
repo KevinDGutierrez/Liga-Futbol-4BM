@@ -39,7 +39,7 @@ public class PatrocinadorService implements IPatrocinadorService {
         Boolean flag = Boolean.FALSE;
         List<Patrocinador> patrocinadores = listarPatrocinadores();
         for (Patrocinador p : patrocinadores) {
-            if (p.getNombre().equals(patrocinador.getNombre()) && !p.getId().equals(patrocinador.getId())) {
+            if (p.getNombre().equals(patrocinador.getNombre()) && p.getLogo().equals(patrocinador.getLogo()) && !p.getId().equals(patrocinador.getId())) {
                 flag = Boolean.TRUE;
             }
         }
