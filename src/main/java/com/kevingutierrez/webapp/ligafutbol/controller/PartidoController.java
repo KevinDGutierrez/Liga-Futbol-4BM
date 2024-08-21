@@ -1,6 +1,7 @@
 package com.kevingutierrez.webapp.ligafutbol.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,14 @@ public class PartidoController {
     public ResponseEntity<?> listarPartidos() {
         Map<String,String> response = new HashMap<>();
     try {
-            return ResponseEntity.ok(partidoService.listarPartidos());
+            List<Partido> partido = partidoService.listarPartidos();
+            if(!partido.isEmpty()) {
+            return ResponseEntity.ok(partidoService.listarPartidos()); 
+            }else {
+                response.put("message", "Error");
+                response.put("err", "No se encontro una lista de Partidos");
+                return ResponseEntity.badRequest().body(response);
+            }
         } catch (Exception e) {
             response.put("message", "Error");
             response.put("err", "No se encontro una lista de Partidos");
@@ -41,12 +49,21 @@ public class PartidoController {
 
 
         @GetMapping("/partido")
-        public ResponseEntity<Partido> buscarPartidoPorId(@RequestParam Long id) {
+        public ResponseEntity<?> buscarPartidoPorId(@RequestParam Long id) {
+            Map<String, String> response = new HashMap<>();
             try {
                 Partido partido = partidoService.buscarPartidoPorId(id);
-                return ResponseEntity.ok(partido);
+                if(partido != null) {
+                    return ResponseEntity.ok(partido);
+                } else{
+                    response.put("message", "Error");
+                    response.put("err", "No se encontro el partido buscado ");
+                    return ResponseEntity.badRequest().body(response);
+                }
             } catch (Exception e) {
-                return ResponseEntity.badRequest().body(null);
+                response.put("message", "Error");
+                response.put("err", "No se encontro el partido buscado");
+                return ResponseEntity.badRequest().body(response);
             }
             
         }
@@ -55,7 +72,12 @@ public class PartidoController {
         public ResponseEntity<Map<String,String>> agregarPartido(@RequestBody Partido partido) {
         Map<String, String> response = new HashMap<>();
         try {
-            partidoService.guardarPartido(partido);
+            Partido partidoGuardado = partidoService.guardarPartido(partido);
+            if (partidoGuardado == null) {
+                response.put("message", "Error");
+                response.put("err", "El partido debe tener exactamente dos equipos diferentes.");
+                return ResponseEntity.badRequest().body(response);
+            }
             response.put("message", "Partido agregado con éxito");
             return ResponseEntity.ok(response);
         } catch (Exception e) {
@@ -70,18 +92,29 @@ public class PartidoController {
     public ResponseEntity<Map<String, String>> editarPartido(@RequestParam Long id, @RequestBody Partido partidoNuevo) {
         Map<String, String> response = new HashMap<>();
         try {
-            Partido partido = partidoService.buscarPartidoPorId(id);
-            partido.setGolVisitante(partidoNuevo.getGolVisitante());
-            partido.setGolLocales(partidoNuevo.getGolLocales());
-            partido.setFecha(partidoNuevo.getFecha());
-            partido.setEquipos(partidoNuevo.getEquipos());
-            partidoService.guardarPartido(partido);
-            response.put("message", "Partido modificiado con exito");
-            return ResponseEntity.ok(response);
-        } catch (Exception e) {
+        Partido partidoExistente = partidoService.buscarPartidoPorId(id);
+        if (partidoExistente == null) {
             response.put("message", "Error");
-            response.put("err", "Hubo un error al modificar al partido");
+            response.put("err", "No se encontró el partido con el ID especificado.");
             return ResponseEntity.badRequest().body(response);
+        }
+        partidoExistente.setGolVisitante(partidoNuevo.getGolVisitante());
+        partidoExistente.setGolLocales(partidoNuevo.getGolLocales());
+        partidoExistente.setFecha(partidoNuevo.getFecha());
+        partidoExistente.setEquipos(partidoNuevo.getEquipos());
+        Partido partidoGuardado = partidoService.guardarPartido(partidoExistente);
+        if (partidoGuardado == null) {
+            response.put("message", "Error");
+            response.put("err", "El partido debe tener exactamente dos equipos diferentes.");
+            return ResponseEntity.badRequest().body(response);
+        }
+        response.put("message", "Partido modificado con éxito");
+        return ResponseEntity.ok(response);
+
+    } catch (Exception e) {
+        response.put("message", "Error");
+        response.put("err", "Hubo un error al modificar el partido");
+        return ResponseEntity.badRequest().body(response);
         }
     }
 

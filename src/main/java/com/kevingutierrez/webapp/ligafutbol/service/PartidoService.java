@@ -26,7 +26,14 @@ public class PartidoService implements IPartidoService {
 
     @Override
     public Partido guardarPartido(Partido partido) {
-       return partidoRepository.save(partido);
+      if (partido.getEquipos() == null || partido.getEquipos().size() != 2) {
+         return null; 
+   }
+      if (partido.getEquipos().get(0).equals(partido.getEquipos().get(1))) {
+         return null; 
+   }
+         return partidoRepository.save(partido);
+   }
     }
 
     @Override
