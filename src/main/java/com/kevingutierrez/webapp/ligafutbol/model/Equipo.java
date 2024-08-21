@@ -17,5 +17,5 @@ public class Equipo {
     private String nombre;
     private String estadio;
     private String ciudad;
-    private String aforo;
+    private Long aforo;
 }

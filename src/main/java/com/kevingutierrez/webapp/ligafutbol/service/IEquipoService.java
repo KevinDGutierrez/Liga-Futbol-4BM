@@ -12,4 +12,6 @@ public interface IEquipoService {
     public Equipo buscarEquipoPorId(Long id);
 
     public void eliminarEquipo(Equipo equipo);
+
+    public Boolean verficarAforo(Equipo equipo);
 }
