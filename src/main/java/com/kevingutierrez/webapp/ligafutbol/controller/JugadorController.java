@@ -69,9 +69,15 @@ public class JugadorController {
     public ResponseEntity<Map<String, String>> agregarJugador(@RequestBody Jugador jugador) {
         Map<String, String> response = new HashMap<>();
         try {
-            jugadorService.guardarJugador(jugador);
-            response.put("message", "¡¡Jugador creado con éxito :D!!");
-            return ResponseEntity.ok(response);
+            if(!jugadorService.verificarJugadoresDeMasEnEquipos(jugador)){
+                jugadorService.guardarJugador(jugador);
+                response.put("message", "¡¡Jugador creado con éxito :D!!");
+                return ResponseEntity.ok(response);
+            }else{
+                response.put("message", "Error");
+                response.put("err", "El equipo ya alcanzo el maximo de jugadores");
+                return ResponseEntity.badRequest().body(response);
+            }
         } catch (Exception e) {
             response.put("message", "Error");
             response.put("err", "Hubo un error al crear el jugador");
@@ -88,9 +94,15 @@ public class JugadorController {
             jugador.setApellido(jugadorNuevo.getApellido());
             jugador.setDorsal(jugadorNuevo.getDorsal());
             jugador.setEquipo(jugadorNuevo.getEquipo());
-            jugadorService.guardarJugador(jugador);
-            response.put("message", "¡¡Jugador modificado con éxito :D!!");
-            return ResponseEntity.ok(response);
+            if(!jugadorService.verificarJugadoresDeMasEnEquipos(jugador)){
+                jugadorService.guardarJugador(jugador);
+                response.put("message", "¡¡Jugador modificado con éxito :D!!");
+                return ResponseEntity.ok(response);
+            }else{
+                response.put("message", "Error");
+                response.put("err", "El equipo ya alcanzo el maximo de jugadores");
+                return ResponseEntity.badRequest().body(response);    
+            }
         } catch (Exception e) {
             response.put("message", "Error");
             response.put("err", "Hubo un error al modificar el Jugador");
