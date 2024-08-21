@@ -14,4 +14,6 @@ public interface IEquipamientoService {
 
     public void eliminarEquipamiento(Equipamiento equipamiento);
 
+    public Boolean verificarEquipamientosPorEquipo(Equipamiento equipamiento);
+
 }

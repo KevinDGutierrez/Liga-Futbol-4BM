@@ -18,11 +18,12 @@ public class Equipamiento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String Color;
-    @Lob
-    @Column(columnDefinition = "BLOB")
-    private byte[] escudo;
+    private String color;
+    @Column(columnDefinition = "TEXT")
+    private String escudo;
     @ManyToOne
     private Patrocinador patrocinador;
+    @ManyToOne
+    private Equipo equipo;
 
 }

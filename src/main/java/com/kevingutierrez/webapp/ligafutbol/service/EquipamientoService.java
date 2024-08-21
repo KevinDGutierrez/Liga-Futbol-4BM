@@ -33,4 +33,22 @@ public class EquipamientoService implements IEquipamientoService {
         equipamientoRepository.delete(equipamiento);    
     }
 
+    @Override
+    public Boolean verificarEquipamientosPorEquipo(Equipamiento equipamiento) {
+        Boolean flag = Boolean.FALSE;
+        List<Equipamiento> equipamientos = listarEquipamientos();
+        int contador = 0;
+        for (Equipamiento e : equipamientos) {
+            if (e.getEquipo().getId().equals(equipamiento.getEquipo().getId())) {
+                contador++;
+            }
+            if (contador >= 3) {
+                flag = Boolean.TRUE;
+                break;
+            }
+        }
+    
+        return flag;
+    }
+
 }
