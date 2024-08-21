@@ -28,21 +28,40 @@ public class JugadorController {
     JugadorService jugadorService;
 
     @GetMapping("/jugadores")
-    public ResponseEntity<List<Jugador>> listarJugadores() {
+    public ResponseEntity<?> listarJugadores() {
+        Map<String, String> response = new HashMap<>();
         try {
-            return ResponseEntity.ok(jugadorService.listarJugadores());
+            List<Jugador> jugador = jugadorService.listarJugadores();
+            if (!jugador.isEmpty()){
+                return ResponseEntity.ok(jugadorService.listarJugadores());
+            }else{
+                response.put("message", "Error");
+                response.put("err", "No se encontro una lista jugadores");
+                return ResponseEntity.badRequest().body(response);
+            }
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(null);
+            response.put("message", "Error");
+            response.put("err", "No se encontro una lista jugadores");
+            return ResponseEntity.badRequest().body(response);
         }
     }
 
     @GetMapping("/jugador")
-    public ResponseEntity<Jugador> buscarJugadorPorId(@RequestParam Long id) {
+    public ResponseEntity<?> buscarJugadorPorId(@RequestParam Long id) {
+        Map<String, String> response = new HashMap<>();
         try {
             Jugador jugador = jugadorService.buscarJugadorPorId(id);
-            return ResponseEntity.ok(jugador);
+            if(jugador != null){
+                return ResponseEntity.ok(jugador);
+            }else{
+                response.put("message", "Error");
+                response.put("err", "No se encontro al jugador buscado");
+                return ResponseEntity.badRequest().body(response);
+            }
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(null);
+            response.put("message", "Error");
+            response.put("err", "No se encontro al jugador buscado");
+            return ResponseEntity.badRequest().body(response);
         }
     }
 
@@ -50,9 +69,15 @@ public class JugadorController {
     public ResponseEntity<Map<String, String>> agregarJugador(@RequestBody Jugador jugador) {
         Map<String, String> response = new HashMap<>();
         try {
-            jugadorService.guardarJugador(jugador);
-            response.put("message", "¡¡Jugador creado con éxito :D!!");
-            return ResponseEntity.ok(response);
+            if(!jugadorService.verificarJugadoresDeMasEnEquipos(jugador)){
+                jugadorService.guardarJugador(jugador);
+                response.put("message", "¡¡Jugador creado con éxito :D!!");
+                return ResponseEntity.ok(response);
+            }else{
+                response.put("message", "Error");
+                response.put("err", "El equipo ya alcanzo el maximo de jugadores");
+                return ResponseEntity.badRequest().body(response);
+            }
         } catch (Exception e) {
             response.put("message", "Error");
             response.put("err", "Hubo un error al crear el jugador");
@@ -69,10 +94,15 @@ public class JugadorController {
             jugador.setApellido(jugadorNuevo.getApellido());
             jugador.setDorsal(jugadorNuevo.getDorsal());
             jugador.setEquipo(jugadorNuevo.getEquipo());
-            jugador.setGol(jugadorNuevo.getGol());
-            jugadorService.guardarJugador(jugador);
-            response.put("message", "¡¡Jugador modificado con éxito :D!!");
-            return ResponseEntity.ok(response);
+            if(!jugadorService.verificarJugadoresDeMasEnEquipos(jugador)){
+                jugadorService.guardarJugador(jugador);
+                response.put("message", "¡¡Jugador modificado con éxito :D!!");
+                return ResponseEntity.ok(response);
+            }else{
+                response.put("message", "Error");
+                response.put("err", "El equipo ya alcanzo el maximo de jugadores");
+                return ResponseEntity.badRequest().body(response);    
+            }
         } catch (Exception e) {
             response.put("message", "Error");
             response.put("err", "Hubo un error al modificar el Jugador");

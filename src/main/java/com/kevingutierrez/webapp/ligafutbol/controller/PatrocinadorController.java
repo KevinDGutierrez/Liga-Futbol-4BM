@@ -28,17 +28,40 @@ public class PatrocinadorController {
     PatrocinadorService patrocinadorService;
 
     @GetMapping("/patrocinadores")
-    public List<Patrocinador> listarPatrocinadores(){
-        return patrocinadorService.listarPatrocinadores();
+    public ResponseEntity<?> listarPatrocinadores() {
+        Map<String, String> response = new HashMap<>();
+        try {
+            List<Patrocinador> patrocinador = patrocinadorService.listarPatrocinadores();
+            if (!patrocinador.isEmpty()){
+                return ResponseEntity.ok(patrocinadorService.listarPatrocinadores());
+            }else{
+                response.put("message", "Error");
+                response.put("err", "No se encontro una lista patrocinadores");
+                return ResponseEntity.badRequest().body(response);
+            }
+        } catch (Exception e) {
+            response.put("message", "Error");
+            response.put("err", "No se encontro una lista patrocinadores");
+            return ResponseEntity.badRequest().body(response);
+        }
     }
 
     @GetMapping("/patrocinador")
-    public ResponseEntity<Patrocinador> buscarPatrocinadorPorId(@RequestParam Long id){
+    public ResponseEntity<?> buscarPatrocinadorPorId(@RequestParam Long id) {
+        Map<String, String> response = new HashMap<>();
         try {
             Patrocinador patrocinador = patrocinadorService.buscarPatrocinadorPorId(id);
-            return ResponseEntity.ok(patrocinador);
+            if(patrocinador != null){
+                return ResponseEntity.ok(patrocinador);
+            }else{
+                response.put("message", "Error");
+                response.put("err", "No se encontro al patrocinador buscado");
+                return ResponseEntity.badRequest().body(response);
+            }
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(null);
+            response.put("message", "Error");
+            response.put("err", "No se encontro al patrocinador buscado");
+            return ResponseEntity.badRequest().body(response);
         }
     }
 
@@ -69,7 +92,7 @@ public class PatrocinadorController {
             Patrocinador patrocinador = patrocinadorService.buscarPatrocinadorPorId(id);
             patrocinador.setNombre(patrocinadorNuevo.getNombre());
             patrocinador.setLogo(patrocinadorNuevo.getLogo());
-            patrocinador.setEquipos(patrocinadorNuevo.getEquipos());
+            patrocinador.setEquipo(patrocinadorNuevo.getEquipo());
             if(!patrocinadorService.verificarDatoDuplicado(patrocinador)){
                 patrocinadorService.guardarPatrocinador(patrocinador);
                 response.put("message", "¡¡Patrocinador modificado con éxito :D!!");

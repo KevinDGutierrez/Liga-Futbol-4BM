@@ -34,4 +34,20 @@ public class JugadorService implements IJugadorService{
         jugadorRepository.delete(jugador);
     }
 
+    @Override
+    public Boolean verificarJugadoresDeMasEnEquipos(Jugador jugador) {
+        Boolean flag = Boolean.FALSE;
+        List<Jugador> jugadores = listarJugadores();
+        int contador = 0;
+        for (Jugador j : jugadores) {
+            if (j.getEquipo().getId().equals(jugador.getEquipo().getId()) && !j.getId().equals(jugador.getId())) {
+                contador++;
+            }
+            if (contador >= 16) {
+                flag = Boolean.TRUE;
+            }
+        }
+        return flag;
+    }
+
 }

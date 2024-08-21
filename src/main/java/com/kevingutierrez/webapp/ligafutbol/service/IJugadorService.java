@@ -14,4 +14,6 @@ public interface IJugadorService {
 
     public void eliminarJugador(Jugador jugador);
 
+    public Boolean verificarJugadoresDeMasEnEquipos(Jugador jugador);
+
 }
