@@ -32,4 +32,5 @@ public class EquipoService implements IEquipoService{
     public void eliminarEquipo(Equipo equipo) {
         equipoRepository.delete(equipo);
     }
+
 }

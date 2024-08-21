@@ -27,30 +27,53 @@ public class EquipoController {
     EquipoService equipoService;
 
     @GetMapping("/equipos")
-    public List<Equipo> listaEquipos(){
-        return equipoService.listarEquipos();
+    public ResponseEntity<?> listaEquipos(){
+        Map<String, String> response = new HashMap<>();
+       try {
+        List<Equipo> equipo = equipoService.listarEquipos();
+        if(!equipo.isEmpty()){
+            return ResponseEntity.ok(equipoService.listarEquipos());
+        }else{
+            response.put("message", "error");
+            response.put("err", "no se encontro una lista de equipos");
+            return ResponseEntity.badRequest().body(response);
+        }
+       } catch (Exception e) {
+            response.put("message", "error");
+            response.put("err", "no se encontro una lista de equipos");
+            return ResponseEntity.badRequest().body(response);
+       }
     }
 
     @GetMapping("/equipo")
-    public ResponseEntity<Equipo> buscarEquipoPorId(@RequestParam Long id){
-        try {
-            Equipo equipo = equipoService.buscarEquipoPorId(id);
+    public ResponseEntity<?> buscarEquipoPorId(@RequestParam Long id){
+        Map<String, String> response = new HashMap<>();
+       try {
+        Equipo equipo = equipoService.buscarEquipoPorId(id);
+        if(equipo != null){
             return ResponseEntity.ok(equipo);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(null);
+        }else{
+            response.put("message", "error");
+            response.put("err", "no se encontro los equipos");
+            return ResponseEntity.badRequest().body(response);
         }
+       } catch (Exception e) {
+            response.put("message", "error");
+            response.put("err", "no se encontro los equipos");
+            return ResponseEntity.badRequest().body(response);
+       }
     }
 
     @PostMapping("/equipo")
     public ResponseEntity<Map<String, String>> agregarEquipo(@RequestBody Equipo equipo){
         Map<String, String> response = new HashMap<>();
         try {
-            equipoService.guardarEquipo(equipo);
-            response.put("message", "Equipo creada con éxito");
-            return ResponseEntity.ok(response);
+                equipoService.guardarEquipo(equipo);
+                response.put("message", "Equipo creado con éxito");
+                return ResponseEntity.ok(response);
         } catch (Exception e) {
             response.put("message", "Error");
-            response.put("err", "Hubo un error al crear la Equipo");
+            response.put("err", "Hubo un error al crear el equipo");
             return ResponseEntity.badRequest().body(response);
         }
     }
@@ -65,7 +88,7 @@ public class EquipoController {
             equipo.setCiudad(equipoNuevo.getCiudad());
             equipo.setAforo(equipoNuevo.getAforo());
             equipoService.guardarEquipo(equipo);
-            response.put("massage", "El equipo se ha modificado con exito");
+            response.put("message", "Equipo modificado con éxito");
             return ResponseEntity.ok(response);
         }catch(Exception e){
             response.put("message", "Error");
