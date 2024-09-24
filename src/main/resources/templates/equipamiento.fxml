@@ -4,12 +4,12 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kevingutierrez.webapp.ligafutbol.controller.FXController.EquipamientoController">
    <children>
@@ -29,9 +29,16 @@
             <Button fx:id="btnEliminar" layoutX="10.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="129.0" prefWidth="256.0" text="Eliminar" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <TextField fx:id="tfEquipamientoId" layoutX="110.0" layoutY="64.0" prefHeight="25.0" prefWidth="433.0" />
-      <Button fx:id="btnBuscar" layoutX="47.0" layoutY="58.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="49.0" text="Button" />
-      <TableView fx:id="tblEquipamiento" layoutX="29.0" layoutY="118.0" prefHeight="528.0" prefWidth="695.0">
+      <TextField fx:id="tfEquipamientoId" layoutX="102.0" layoutY="63.0" prefHeight="22.0" prefWidth="433.0" />
+      <Button fx:id="btnBuscar" layoutX="47.0" layoutY="58.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="43.0">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../java/com/kevingutierrez/webapp/ligafutbol/assets/image/lupa.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <TableView fx:id="tblEquipamiento" layoutX="29.0" layoutY="118.0" onSort="#OnClick" prefHeight="528.0" prefWidth="695.0">
         <columns>
           <TableColumn fx:id="colColor" prefWidth="91.0" text="Color" />
           <TableColumn fx:id="colEscudo" prefWidth="137.0" text="Escudo" />
@@ -39,5 +46,6 @@
             <TableColumn fx:id="colEquipo" prefWidth="231.0" text="Equipo" />
         </columns>
       </TableView>
+      <Button fx:id="btnRegresar" layoutX="43.0" layoutY="673.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="266.0" text="Regresar" />
    </children>
 </Pane>
