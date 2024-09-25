@@ -24,12 +24,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="118.0" prefWidth="219.0" text="Agregar" />
-            <Button fx:id="btnEditar" layoutX="10.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="118.0" prefWidth="219.0" text="Editar" GridPane.rowIndex="1" />
-            <Button fx:id="btnEliminar" layoutX="10.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="118.0" prefWidth="219.0" text="Eliminar" GridPane.rowIndex="2" />
+            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="118.0" prefWidth="219.0" text="Agregar" />
+            <Button fx:id="btnEditar" layoutX="10.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="118.0" prefWidth="219.0" text="Editar" GridPane.rowIndex="1" />
+            <Button fx:id="btnEliminar" layoutX="10.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="118.0" prefWidth="219.0" text="Eliminar" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <TableView fx:id="tblPartido" layoutX="39.0" layoutY="114.0" onSort="#OnClick" prefHeight="538.0" prefWidth="707.0">
+      <TableView fx:id="tblPartido" layoutX="39.0" layoutY="114.0" onMouseClicked="#cargarTextField" onSort="#OnClick" prefHeight="538.0" prefWidth="707.0">
         <columns>
           <TableColumn fx:id="colEquipo" prefWidth="143.0" text="Equipo" />
           <TableColumn fx:id="colGolLocal" prefWidth="217.0" text="Gol Local" />
@@ -37,8 +37,8 @@
             <TableColumn fx:id="colFecha" prefWidth="119.0" text="Fecha" />
         </columns>
       </TableView>
-      <TextField fx:id="tfPartidoId" layoutX="100.0" layoutY="70.0" prefHeight="25.0" prefWidth="347.0" />
-      <Button fx:id="btnBuscar" layoutX="39.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="48.0">
+      <TextField fx:id="tfPartidoId" layoutX="100.0" layoutY="70.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="347.0" />
+      <Button fx:id="btnBuscar" layoutX="39.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="34.0" prefWidth="48.0">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -46,6 +46,6 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btnRegresar" layoutX="48.0" layoutY="680.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="241.0" text="Regresar" />
+      <Button fx:id="btnRegresar" layoutX="48.0" layoutY="680.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="241.0" text="Regresar" />
    </children>
 </Pane>

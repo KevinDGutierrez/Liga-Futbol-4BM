@@ -24,13 +24,13 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="110.0" prefWidth="234.0" text="Agregar" />
-            <Button fx:id="btnEditar" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="110.0" prefWidth="234.0" text="Editar" GridPane.rowIndex="1" />
-            <Button fx:id="btnEliminar" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="110.0" prefWidth="234.0" text="Eliminar" GridPane.rowIndex="2" />
+            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="110.0" prefWidth="234.0" text="Agregar" />
+            <Button fx:id="btnEditar" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="110.0" prefWidth="234.0" text="Editar" GridPane.rowIndex="1" />
+            <Button fx:id="btnEliminar" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="110.0" prefWidth="234.0" text="Eliminar" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <TextField fx:id="tfJugadorId" layoutX="112.0" layoutY="69.0" prefHeight="25.0" prefWidth="345.0" />
-      <Button fx:id="btnBuscar" layoutX="52.0" layoutY="63.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="37.0" prefWidth="49.0">
+      <TextField fx:id="tfJugadorId" layoutX="112.0" layoutY="69.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="345.0" />
+      <Button fx:id="btnBuscar" layoutX="52.0" layoutY="63.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="37.0" prefWidth="49.0">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -38,7 +38,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <TableView fx:id="tblJugador" layoutX="52.0" layoutY="120.0" onSort="#OnClick" prefHeight="523.0" prefWidth="728.0">
+      <TableView fx:id="tblJugador" layoutX="52.0" layoutY="120.0" onMouseClicked="#cargarTextField" prefHeight="523.0" prefWidth="728.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="64.0" text="Id" />
           <TableColumn fx:id="colNombreJugador" prefWidth="222.0" text="Nombre" />
@@ -47,6 +47,6 @@
             <TableColumn fx:id="ColEquipo" prefWidth="140.0" text="Equipo" />
         </columns>
       </TableView>
-      <Button fx:id="btnRegresar" layoutX="44.0" layoutY="670.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="284.0" text="Regresar" />
+      <Button fx:id="btnRegresar" layoutX="44.0" layoutY="670.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="284.0" text="Regresar" />
    </children>
 </Pane>
