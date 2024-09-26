@@ -21,7 +21,4 @@ public class Gol {
     private String descripcion;
     @ManyToOne
     private Jugador jugador;
-    public String toString(){
-        return nombre;
-    }
 }
