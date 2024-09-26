@@ -14,16 +14,17 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kevingutierrez.webapp.ligafutbol.controller.FXController.PartidoController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="1200.0" layoutX="-14.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true" />
-      <TableView fx:id="tblPartido" layoutX="481.0" layoutY="114.0" onMouseClicked="#cargarTextField" onSort="#OnClick" prefHeight="538.0" prefWidth="705.0">
+      <TableView fx:id="tblPartido" layoutX="481.0" layoutY="114.0" onMouseClicked="#cargarTextField" prefHeight="538.0" prefWidth="705.0">
         <columns>
-          <TableColumn fx:id="colEquipo" prefWidth="162.0" text="Equipo" />
-          <TableColumn fx:id="colGolLocal" prefWidth="239.0" text="Gol Local" />
-            <TableColumn fx:id="colGolVisitante" prefWidth="208.0" text="Gol Visitante" />
-            <TableColumn fx:id="colFecha" prefWidth="95.0" text="Fecha" />
+            <TableColumn fx:id="colId" prefWidth="106.39993286132812" text="ID" />
+          <TableColumn fx:id="colGolLocal" prefWidth="146.39996337890625" text="Gol Local" />
+            <TableColumn fx:id="colGolVisitante" minWidth="0.0" prefWidth="104.79998779296875" text="Gol Visitante" />
+            <TableColumn fx:id="colFecha" minWidth="4.80010986328125" prefWidth="194.39996337890625" text="Fecha" />
+          <TableColumn fx:id="colEquipo" prefWidth="155.99993896484375" text="Equipo" />
         </columns>
       </TableView>
-      <TextField fx:id="tfPartidoId" layoutX="761.0" layoutY="71.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="347.0" />
-      <Button fx:id="btnBuscar" layoutX="1119.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="34.0" prefWidth="48.0">
+      <TextField fx:id="tfPartidoId" layoutX="761.0" layoutY="71.0" prefHeight="25.0" prefWidth="347.0" />
+      <Button fx:id="btnBuscar" layoutX="1119.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="48.0">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -31,15 +32,14 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btnRegresar" layoutX="902.0" layoutY="680.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="241.0" text="Regresar" />
-      <Button fx:id="btnDetallePartido" layoutX="641.0" layoutY="680.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="241.0" text="Detalle Partido" />
-      <TextField fx:id="tfGolLocal" layoutX="47.0" layoutY="284.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="293.0" />
-      <ComboBox fx:id="cmbEquipo" layoutX="47.0" layoutY="217.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="293.0" />
-      <TextField fx:id="tfGolVisitante" layoutX="47.0" layoutY="349.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="293.0" />
-      <TextField fx:id="tfFecha" layoutX="47.0" layoutY="415.0" onMouseClicked="#cargarTextField" prefHeight="36.0" prefWidth="164.0" />
-      <Button fx:id="btnGuardar" layoutX="47.0" layoutY="501.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="67.0" prefWidth="116.0" text="Guardar" />
-      <Button fx:id="btnEliminar" layoutX="236.0" layoutY="501.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="67.0" prefWidth="116.0" text="Eliminar" />
-      <Button fx:id="btnLimpiar" layoutX="142.0" layoutY="598.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="67.0" prefWidth="116.0" text="Vaciar" />
+      <Button fx:id="btnRegresar" layoutX="902.0" layoutY="680.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="241.0" text="Regresar" />
+      <TextField fx:id="tfGolLocal" layoutX="47.0" layoutY="284.0" prefHeight="25.0" prefWidth="293.0" />
+      <ComboBox fx:id="cmbEquipo" layoutX="47.0" layoutY="217.0" prefHeight="25.0" prefWidth="293.0" />
+      <TextField fx:id="tfGolVisitante" layoutX="47.0" layoutY="349.0" prefHeight="25.0" prefWidth="293.0" />
+      <TextField fx:id="tfFecha" layoutX="47.0" layoutY="415.0" prefHeight="36.0" prefWidth="164.0" />
+      <Button fx:id="btnGuardar" layoutX="47.0" layoutY="501.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="116.0" text="Guardar" />
+      <Button fx:id="btnEliminar" layoutX="236.0" layoutY="501.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="116.0" text="Eliminar" />
+      <Button fx:id="btnLimpiar" layoutX="142.0" layoutY="598.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="116.0" text="Vaciar" />
       <Label layoutX="9.0" prefHeight="67.0" prefWidth="357.0" text="FORMULARIO PARTIDO">
          <font>
             <Font name="Dubai Medium" size="32.0" />
@@ -65,7 +65,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="tfId" layoutX="47.0" layoutY="153.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="293.0" />
+      <TextField fx:id="tfId" editable="false" layoutX="47.0" layoutY="153.0" prefHeight="25.0" prefWidth="293.0" />
       <Label layoutX="47.0" layoutY="114.0" prefHeight="25.0" prefWidth="106.0" text="ID">
          <font>
             <Font size="22.0" />

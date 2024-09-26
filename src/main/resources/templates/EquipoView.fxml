@@ -22,8 +22,8 @@
             <TableColumn fx:id="colAforo" prefWidth="108.0" text="Aforo" />
         </columns>
       </TableView>
-      <TextField fx:id="tfEquipoId" layoutX="770.0" layoutY="89.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="319.0" />
-      <Button fx:id="btnBuscar" layoutX="1103.0" layoutY="79.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="44.0" prefWidth="50.0">
+      <TextField fx:id="tfEquipoId" layoutX="770.0" layoutY="89.0" prefHeight="25.0" prefWidth="319.0" />
+      <Button fx:id="btnBuscar" layoutX="1103.0" layoutY="79.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="44.0" prefWidth="50.0">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -32,14 +32,14 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextField fx:id="tfNombre" layoutX="32.0" layoutY="241.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="293.0" />
-      <TextField fx:id="tfApellido" layoutX="32.0" layoutY="308.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="293.0" />
-      <TextField fx:id="tfCiudad" layoutX="32.0" layoutY="375.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="293.0" />
-      <TextField fx:id="tfAforo" layoutX="32.0" layoutY="434.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="293.0" />
-      <Button fx:id="btnGuardar" layoutX="56.0" layoutY="494.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="74.0" prefWidth="129.0" text="Guardar" />
-      <Button fx:id="btnEliminar" layoutX="242.0" layoutY="494.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="74.0" prefWidth="129.0" text="Eliminar" />
-      <Button fx:id="btnLimpiar" layoutX="145.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="74.0" prefWidth="129.0" text="Vaciar" />
-      <Button fx:id="btnRegresar" layoutX="891.0" layoutY="679.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="274.0" text="Regresar" />
+      <TextField fx:id="tfNombre" layoutX="32.0" layoutY="241.0" prefHeight="25.0" prefWidth="293.0" />
+      <TextField fx:id="tfEstadio" layoutX="32.0" layoutY="308.0" prefHeight="25.0" prefWidth="293.0" />
+      <TextField fx:id="tfCiudad" layoutX="32.0" layoutY="375.0" prefHeight="25.0" prefWidth="293.0" />
+      <TextField fx:id="tfAforo" layoutX="32.0" layoutY="434.0" prefHeight="25.0" prefWidth="293.0" />
+      <Button fx:id="btnGuardar" layoutX="56.0" layoutY="494.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="74.0" prefWidth="129.0" text="Guardar" />
+      <Button fx:id="btnEliminar" layoutX="242.0" layoutY="494.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="74.0" prefWidth="129.0" text="Eliminar" />
+      <Button fx:id="btnLimpiar" layoutX="145.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="74.0" prefWidth="129.0" text="Vaciar" />
+      <Button fx:id="btnRegresar" layoutX="891.0" layoutY="679.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="274.0" text="Regresar" />
       <Label layoutX="8.0" layoutY="8.0" prefHeight="58.0" prefWidth="326.0" text="FORMULARIO EQUIPO">
          <font>
             <Font name="Dubai Medium" size="32.0" />
@@ -65,7 +65,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <TextField layoutX="32.0" layoutY="174.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="293.0" />
+      <TextField fx:id="tfId" editable="false" layoutX="32.0" layoutY="174.0" prefHeight="25.0" prefWidth="293.0" />
       <Label fx:id="tfId" layoutX="33.0" layoutY="137.0" prefHeight="34.0" prefWidth="176.0" text="ID">
          <font>
             <Font size="22.0" />
