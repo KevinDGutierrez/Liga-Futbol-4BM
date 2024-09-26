@@ -13,12 +13,13 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem fx:id="btnEquipamientoControlelr" mnemonicParsing="false" onAction="#handleButtonAction" text="EquipamientoController" />
+              <MenuItem fx:id="btnEquipamientoController" mnemonicParsing="false" onAction="#handleButtonAction" text="EquipamientoController" />
                   <MenuItem fx:id="btnEquipoController" mnemonicParsing="false" onAction="#handleButtonAction" text="EquipoController" />
                   <MenuItem fx:id="btnGolController" mnemonicParsing="false" onAction="#handleButtonAction" text="GolController" />
                   <MenuItem fx:id="btnJugadorController" mnemonicParsing="false" onAction="#handleButtonAction" text="JugadorController" />
                   <MenuItem fx:id="btnPartidoController" mnemonicParsing="false" onAction="#handleButtonAction" text="PartidoController" />
                   <MenuItem fx:id="btnPatrocinadorController" mnemonicParsing="false" onAction="#handleButtonAction" text="PatrocinadorController" />
+                  <MenuItem fx:id="btnPartidoController1" mnemonicParsing="false" onAction="#handleButtonAction" text="PartidoController" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Contacto" />

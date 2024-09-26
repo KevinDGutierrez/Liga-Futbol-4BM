@@ -30,7 +30,6 @@
       </Button>
       <TextField fx:id="tfPatrocinadorId" layoutX="805.0" layoutY="61.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="287.0" />
       <Button fx:id="btnRegresar" layoutX="946.0" layoutY="648.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="215.0" text="Regresar" />
-      <Button fx:id="btnDetallePatrocinador" layoutX="721.0" layoutY="648.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="215.0" text="Detalle Patrocinador" />
       <ComboBox fx:id="cmbPatrocinadorId" layoutX="46.0" layoutY="193.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="329.0" />
       <ComboBox fx:id="cmbEquipoId" layoutX="46.0" layoutY="259.0" onMouseClicked="#cargarTextField" prefHeight="25.0" prefWidth="329.0" />
       <Button fx:id="btnGuardar" layoutX="60.0" layoutY="418.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#cargarTextField" prefHeight="53.0" prefWidth="135.0" text="Guardar" />
