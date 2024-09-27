@@ -13,7 +13,10 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kevingutierrez.webapp.ligafutbol.controller.FXController.PartidoController">
    <children>
-      <ImageView fitHeight="750.0" fitWidth="1200.0" layoutX="-14.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="750.0" fitWidth="1200.0" layoutX="-14.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../java/com/kevingutierrez/webapp/ligafutbol/image/MenuPartidos.png" />
+         </image></ImageView>
       <TableView fx:id="tblPartido" layoutX="481.0" layoutY="114.0" onMouseClicked="#cargarTextField" prefHeight="538.0" prefWidth="705.0">
         <columns>
             <TableColumn fx:id="colId" prefWidth="106.39993286132812" text="ID" />
@@ -39,11 +42,6 @@
       <Button fx:id="btnGuardar" layoutX="14.0" layoutY="598.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="116.0" text="Guardar" />
       <Button fx:id="btnEliminar" layoutX="308.0" layoutY="598.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="116.0" text="Eliminar" />
       <Button fx:id="btnLimpiar" layoutX="159.0" layoutY="598.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="116.0" text="Vaciar" />
-      <Label layoutX="9.0" prefHeight="67.0" prefWidth="357.0" text="FORMULARIO PARTIDO">
-         <font>
-            <Font name="Dubai Medium" size="32.0" />
-         </font>
-      </Label>
       <Label layoutX="47.0" layoutY="178.0" prefHeight="25.0" prefWidth="106.0" text="Equipo">
          <font>
             <Font size="22.0" />

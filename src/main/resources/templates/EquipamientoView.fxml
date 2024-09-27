@@ -13,7 +13,10 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kevingutierrez.webapp.ligafutbol.controller.FXController.EquipamientoController">
    <children>
-      <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../java/com/kevingutierrez/webapp/ligafutbol/image/MenuEquipamientos.png" />
+         </image></ImageView>
       <TextField fx:id="tfEquipamientoId" layoutX="681.0" layoutY="76.0" prefHeight="22.0" prefWidth="433.0" />
       <Button fx:id="btnBuscar" layoutX="1121.0" layoutY="71.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="43.0">
          <graphic>
@@ -40,11 +43,6 @@
       <Button fx:id="btnGuardar" layoutX="38.0" layoutY="506.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="64.0" prefWidth="150.0" text="Guardar" />
       <Button fx:id="btnEliminar" layoutX="225.0" layoutY="506.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="64.0" prefWidth="150.0" text="Eliminar" />
       <Button fx:id="btnLimpiar" layoutX="123.0" layoutY="615.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="64.0" prefWidth="150.0" text="Vaciar" />
-      <Label layoutX="11.0" layoutY="14.0" prefHeight="64.0" prefWidth="465.0" text="FORMULARIO EQUIPAMIENTO" textOverrun="CENTER_WORD_ELLIPSIS">
-         <font>
-            <Font name="Dubai Medium" size="32.0" />
-         </font>
-      </Label>
       <Label layoutX="39.0" layoutY="188.0" prefHeight="25.0" prefWidth="183.0" text="Equipo">
          <font>
             <Font size="22.0" />
