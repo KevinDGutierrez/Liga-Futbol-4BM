@@ -20,5 +20,8 @@ public class Jugador {
     private String dorsal;
     @ManyToOne
     private Equipo equipo;
-
+    @Override
+    public String toString(){
+        return nombre;
+    }
 }
