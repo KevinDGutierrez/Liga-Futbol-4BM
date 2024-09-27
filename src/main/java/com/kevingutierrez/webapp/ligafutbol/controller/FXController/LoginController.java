@@ -1,14 +1,19 @@
 package com.kevingutierrez.webapp.ligafutbol.controller.FXController;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.kevingutierrez.webapp.ligafutbol.model.Equipo;
+import com.kevingutierrez.webapp.ligafutbol.model.Jugador;
+import com.kevingutierrez.webapp.ligafutbol.model.User;
+import com.kevingutierrez.webapp.ligafutbol.service.UserService;
 import com.kevingutierrez.webapp.ligafutbol.system.Main;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,13 +23,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lombok.Setter;
 
+@Component
 public class LoginController implements Initializable{
+    @Setter
+
+    @Autowired
+    UserService userService;
+
     private Main stage;
     private int op = 0;
-
-    private static Connection conexion = null;
-    private static PreparedStatement statement = null;
 
     @FXML
     private TextField tfUser;
@@ -47,40 +56,19 @@ public class LoginController implements Initializable{
                         op = 1;
                     } else if (op == 1) {
                         stage.mostrarMenuView();
-                    }else {
-                    mostrarAlerta("Error", "Credenciales incorrectas", AlertType.ERROR);
-                }
-            } else {
-                mostrarAlerta("Error", "El equipo no fue encontrado", AlertType.ERROR);
+                    }
             }
         } else if (event.getSource() == btnRegistrar) {
-            stage.mostrarRegistroView();
+            stage.mostrarUserView();
         }
     }
 
     public Equipo buscarEquipo() {
-        Equipo equipo = null;
-
-        try {
-            String sql = "SELECT * FROM equipos WHERE nombre = ? AND password = ?";
-            statement = conexion.prepareStatement(sql);
-            statement.setString(1, tfUser.getText());
-            statement.setString(2, tfPassword.getText());
-
-            
-        } catch (SQLException e) {
-            System.out.println("Error al buscar equipo: ");
-        }
-        return equipo;
-    }
-
-
-    private void mostrarAlerta(String titulo, String mensaje, AlertType tipo) {
-        Alert alert = new Alert(tipo);
-        alert.setTitle(titulo);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
+            User user = userService.buscarUserPorId(Long.parseLong(tfUser.getText()));
+            if (user != null) {
+                ObservableList<User> userBuscado = FXCollections.observableArrayList(user);  
+            }
+    }
 
 
     public void setStage(Main stage) {
@@ -89,7 +77,6 @@ public class LoginController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Inicializar si es necesario
     }
 
 }

@@ -1,12 +1,17 @@
 package com.kevingutierrez.webapp.ligafutbol.controller.FXController;
 
+import org.springframework.stereotype.Component;
+
 import com.kevingutierrez.webapp.ligafutbol.system.Main;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 
+@Component
 public class MenuPrincipalController {
+    
+    
     private Main stage;
     
     @FXML
