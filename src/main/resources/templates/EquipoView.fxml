@@ -7,23 +7,25 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kevingutierrez.webapp.ligafutbol.controller.FXController.EquipoController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kevingutierrez.webapp.ligafutbol.controller.FXController.EquipoFXController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../java/com/kevingutierrez/webapp/ligafutbol/image/MenuEquipos.png" />
-         </image></ImageView>
+         </image>
+      </ImageView>
       <TableView fx:id="tblEquipo" layoutX="481.0" layoutY="137.0" onMouseClicked="#cargarTextField" prefHeight="517.0" prefWidth="703.0">
-        <columns>
+         <columns>
             <TableColumn fx:id="colId" prefWidth="56.0" text="ID" />
-          <TableColumn fx:id="colNombre" prefWidth="117.0" text="Nombre" />
-          <TableColumn fx:id="colEstadio" prefWidth="212.0" text="Estadio" />
+            <TableColumn fx:id="colNombre" prefWidth="117.0" text="Nombre" />
+            <TableColumn fx:id="colEstadio" prefWidth="212.0" text="Estadio" />
             <TableColumn fx:id="colCiudad" prefWidth="209.0" text="Ciudad" />
             <TableColumn fx:id="colAforo" prefWidth="108.0" text="Aforo" />
-        </columns>
+         </columns>
       </TableView>
       <TextField fx:id="tfEquipoId" layoutX="770.0" layoutY="89.0" prefHeight="25.0" prefWidth="319.0" />
       <Button fx:id="btnBuscar" layoutX="1103.0" layoutY="79.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="44.0" prefWidth="50.0">
@@ -70,4 +72,4 @@
          </font>
       </Label>
    </children>
-</Pane>
+</AnchorPane>

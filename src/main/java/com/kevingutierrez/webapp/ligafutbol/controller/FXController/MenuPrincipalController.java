@@ -16,7 +16,7 @@ public class MenuPrincipalController {
     
     @FXML
     MenuItem btnEquipamientoController, btnEquipoController, btnGolController, btnJugadorController, 
-    btnPartidoController, btnPatrocinadorController;
+    btnPartidoController, btnPatrocinadorController, btnIniciarSesion;
     
     @FXML
     public void handleButtonAction(ActionEvent event){
@@ -32,6 +32,8 @@ public class MenuPrincipalController {
             stage.mostrarPartidoView();
         }else if(event.getSource() == btnPatrocinadorController){
             stage.mostrarPatrocinadorView();
+        }else if(event.getSource() == btnIniciarSesion){
+            stage.mostrarLoginView();
         }
     }
     

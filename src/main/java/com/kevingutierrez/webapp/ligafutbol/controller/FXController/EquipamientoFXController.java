@@ -12,6 +12,7 @@ import com.kevingutierrez.webapp.ligafutbol.model.Patrocinador;
 import com.kevingutierrez.webapp.ligafutbol.service.EquipoService;
 import com.kevingutierrez.webapp.ligafutbol.service.EquipamientoService;
 import com.kevingutierrez.webapp.ligafutbol.service.PatrocinadorService;
+import com.kevingutierrez.webapp.ligafutbol.system.Main;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,7 +28,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.Setter;
 
 @Component
-public class EquipamientoFXMLController implements Initializable {
+public class EquipamientoFXController implements Initializable {
 
     @Setter
     private Main stage;
@@ -84,7 +85,7 @@ public class EquipamientoFXMLController implements Initializable {
         } else if (event.getSource() == btnLimpiar) {
             limpiarTextField();
         } else if (event.getSource() == btnRegresar) {
-            stage.inicioView();
+            stage.mostrarMenuView();
         }
     }
 
@@ -169,12 +170,12 @@ public class EquipamientoFXMLController implements Initializable {
     }
 
     public void cargarEquipos() {
-        ObservableList<Equipo> equipos = FXCollections.observableArrayList(equipoService.listaEquipos());
+        ObservableList<Equipo> equipos = FXCollections.observableArrayList(equipoService.listarEquipos());
         cmbEquipo.setItems(equipos);
     }
 
     public void cargarPatrocinadores() {
-        ObservableList<Patrocinador> patrocinadores = FXCollections.observableArrayList(patrocinadorService.listaPatrocinadores());
+        ObservableList<Patrocinador> patrocinadores = FXCollections.observableArrayList(patrocinadorService.listarPatrocinadores());
         cmbPatrocinador.setItems(patrocinadores);
     }
 }

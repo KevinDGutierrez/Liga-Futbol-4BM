@@ -9,15 +9,17 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kevingutierrez.webapp.ligafutbol.controller.FXController.GolController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kevingutierrez.webapp.ligafutbol.controller.FXController.GolFXController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../java/com/kevingutierrez/webapp/ligafutbol/image/MenuGoles.png" />
-         </image></ImageView>
+         </image>
+      </ImageView>
       <TextField fx:id="tfGolId" layoutX="679.0" layoutY="55.0" prefHeight="25.0" prefWidth="418.0" />
       <Button fx:id="btnBuscar" layoutX="1104.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="36.0" prefWidth="47.0">
          <graphic>
@@ -26,14 +28,15 @@
                   <Image url="@../../java/com/kevingutierrez/webapp/ligafutbol/image/lupa.png" />
                </image>
             </ImageView>
-         </graphic></Button>
+         </graphic>
+      </Button>
       <TableView fx:id="tblGol" layoutX="440.0" layoutY="89.0" onMouseClicked="#cargarTextField" prefHeight="546.0" prefWidth="735.0">
-        <columns>
+         <columns>
             <TableColumn fx:id="colId" prefWidth="53.0" text="ID" />
-          <TableColumn fx:id="colDescripcion" prefWidth="310.0" text="Descripción" />
+            <TableColumn fx:id="colDescripcion" prefWidth="310.0" text="Descripción" />
             <TableColumn fx:id="colMinuto" minWidth="0.0" prefWidth="168.0" text="Minuto" />
-          <TableColumn fx:id="colJugador" prefWidth="203.0" text="Jugador" />
-        </columns>
+            <TableColumn fx:id="colJugador" prefWidth="203.0" text="Jugador" />
+         </columns>
       </TableView>
       <Button fx:id="btnRegresar" layoutX="880.0" layoutY="669.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="271.0" text="Regresar" />
       <ComboBox fx:id="cmbJugador" layoutX="34.0" layoutY="222.0" prefHeight="25.0" prefWidth="313.0" />
@@ -64,4 +67,4 @@
          </font>
       </Label>
    </children>
-</Pane>
+</AnchorPane>

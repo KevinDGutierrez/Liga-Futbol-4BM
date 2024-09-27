@@ -1,9 +1,10 @@
-package com.kevingutierrez.webapp.ligafutbol.controller;
+package com.kevingutierrez.webapp.ligafutbol.controller.FXController;
 
 import com.kevingutierrez.webapp.ligafutbol.model.Equipo;
 import com.kevingutierrez.webapp.ligafutbol.model.Partido;
 import com.kevingutierrez.webapp.ligafutbol.service.EquipoService;
 import com.kevingutierrez.webapp.ligafutbol.service.PartidoService;
+import com.kevingutierrez.webapp.ligafutbol.system.Main;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -75,7 +77,7 @@ public class PartidoFXController implements Initializable {
         } else if (event.getSource() == btnLimpiar) {
             limpiarForm();
         } else if (event.getSource() == btnRegresar) {
-            stage.inicioView();
+            stage.mostrarMenuView();
         } else if (event.getSource() == btnEliminar) {
             eliminarPartido();
         } else if (event.getSource() == btnBuscar) {
@@ -101,7 +103,7 @@ public class PartidoFXController implements Initializable {
         return FXCollections.observableList(partidoService.listarPartidos());
     }
 
-    public void cargarForm() {
+    public void cargarTextField() {
         Partido partido = tblPartidos.getSelectionModel().getSelectedItem();
         if (partido != null) {
             tfPartidoId.setText(partido.getId().toString());

@@ -115,12 +115,12 @@ public class PatrocinadorFXController implements Initializable {
 
     public void cargarTextField(){
         Patrocinador patrocinador = (Patrocinador)tblPatrocinador.getSelectionModel().getSelectedItem();
-        if(Patrocinador != null){
+        if(patrocinador != null){
             tfId.setText(Long.toString(patrocinador.getId()));
             tfNombre.setText(patrocinador.getNombre());
             tfLogo.setText(patrocinador.getLogo());
             lvEquipos.getSelectionModel().clearSelection();
-            for (Equipo equipo : equipo.getEquipos()) {
+            for (Equipo equipo : patrocinador.getEquipo()) {
                 lvEquipos.getSelectionModel().select(equipo);
             }
 
@@ -144,7 +144,7 @@ public class PatrocinadorFXController implements Initializable {
         patrocinador.setNombre(tfNombre.getText());
         patrocinador.setLogo(tfLogo.getText());
         equiposSeleccionados = lvEquipos.getSelectionModel().getSelectedItems();
-        patrocinador.setEquipos(new ArrayList<>(equiposSeleccionados));
+        patrocinador.setEquipo(new ArrayList<>(equiposSeleccionados));
         patrocinadorService.guardarPatrocinador(patrocinador);
         cargarDatos();
     }
@@ -153,7 +153,7 @@ public class PatrocinadorFXController implements Initializable {
         Patrocinador patrocinador = patrocinadorService.buscarPatrocinadorPorId(Long.parseLong(tfId.getText()));
         patrocinador.setNombre(tfNombre.getText());
         patrocinador.setLogo(tfLogo.getText());
-        patrocinador.setEquipos(equiposSeleccionados);
+        patrocinador.setEquipo(equiposSeleccionados);
         patrocinadorService.guardarPatrocinador(patrocinador);
         cargarDatos();
     }

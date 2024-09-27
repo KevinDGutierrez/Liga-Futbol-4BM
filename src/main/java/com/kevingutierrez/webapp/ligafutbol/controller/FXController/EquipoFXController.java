@@ -23,7 +23,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import lombok.Setter;
 
 @Component
-public class EquipoFXMLController implements Initializable {
+public class EquipoFXController implements Initializable {
     @Setter
     private Main stage;
 
@@ -66,7 +66,7 @@ public class EquipoFXMLController implements Initializable {
         } else if(event.getSource() == btnLimpiar) {
             limpiarTextField();
         } else if(event.getSource() == btnRegresar) {
-            stage.inicioView();
+            stage.mostrarMenuView();
         }
     }
 

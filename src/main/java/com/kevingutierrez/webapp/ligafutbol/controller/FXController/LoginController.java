@@ -59,17 +59,20 @@ public class LoginController implements Initializable{
                     }
             }
         } else if (event.getSource() == btnRegistrar) {
-            stage.mostrarUserView();
+            stage.mostrarRegistroView();
         }
     }
 
     public Equipo buscarEquipo() {
-            User user = userService.buscarUserPorId(Long.parseLong(tfUser.getText()));
-            if (user != null) {
-                ObservableList<User> userBuscado = FXCollections.observableArrayList(user);  
-            }
-    }
-
+        User user = userService.buscarUserPorId(Long.parseLong(tfUser.getText()));
+        if (user != null) {
+            ObservableList<User> userBuscado = FXCollections.observableArrayList(user);  
+            Equipo equipo = user.getEquipo();
+            return equipo;
+        } else {
+            return null;
+        }
+    }
 
     public void setStage(Main stage) {
         this.stage = stage;

@@ -116,10 +116,10 @@ public class GolFXController implements Initializable {
 
     public void cargarTextField(){
         Gol gol = (Gol)tblGol.getSelectionModel().getSelectedItem();
-        if(Gol != null){
-            tfId.setText(Long.toString(Gol.getId()));
-            tfMinuto.setText(Gol.getMinutoAnotacion());
-            taDescripcion.setText(Gol.getDescripcion());
+        if(gol != null){
+            tfId.setText(Long.toString(gol.getId()));
+            tfMinuto.setText(gol.getMinutoAnotacion());
+            taDescripcion.setText(gol.getDescripcion());
             cmbJugador.getSelectionModel().select(0);
         }
     }
@@ -137,7 +137,7 @@ public class GolFXController implements Initializable {
         cargarDatos();
     }
 
-    public ObservableList<Jugador> listarGoles(){
+    public ObservableList<Gol> listarGoles(){
         return FXCollections.observableArrayList(golService.listarGoles());
     }
 

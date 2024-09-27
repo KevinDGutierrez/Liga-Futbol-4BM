@@ -24,7 +24,7 @@ import javafx.scene.control.TextField;
 import lombok.Setter;
 
 @Component
-public class UserController implements Initializable{
+public class RegistroController implements Initializable{
     @Setter
     
     @Autowired

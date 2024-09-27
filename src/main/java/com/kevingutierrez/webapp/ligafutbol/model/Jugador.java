@@ -20,12 +20,8 @@ public class Jugador {
     private String dorsal;
     @ManyToOne
     private Equipo equipo;
-<<<<<<< HEAD
     @Override
     public String toString(){
         return nombre;
     }
-=======
-
->>>>>>> luisCuxun-2023518
 }
