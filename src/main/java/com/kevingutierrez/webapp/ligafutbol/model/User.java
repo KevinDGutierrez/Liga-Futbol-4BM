@@ -10,22 +10,13 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="Jugadores")
-public class Jugador {
+@Table(name = "usuarios")
+public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
-    private String apellido;
-    private String dorsal;
+    private String user;
+    private String password;
     @ManyToOne
     private Equipo equipo;
-<<<<<<< HEAD
-    @Override
-    public String toString(){
-        return nombre;
-    }
-=======
-
->>>>>>> luisCuxun-2023518
 }

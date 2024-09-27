@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kevingutierrez.webapp.ligafutbol.controller.FXController.JugadorController">
+   <children>
+      <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../java/com/kevingutierrez/webapp/ligafutbol/image/MenuJugadores.png" />
+         </image></ImageView>
+      <TextField fx:id="tfJugadorId" layoutX="764.0" layoutY="63.0" prefHeight="25.0" prefWidth="351.0" />
+      <Button fx:id="btnBuscar" layoutX="1124.0" layoutY="57.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="37.0" prefWidth="49.0">
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../java/com/kevingutierrez/webapp/ligafutbol/image/lupa.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <TableView fx:id="tblJugador" layoutX="445.0" layoutY="101.0" onMouseClicked="#cargarTextField" prefHeight="523.0" prefWidth="728.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="64.0" text="Id" />
+          <TableColumn fx:id="colNombreJugador" prefWidth="222.0" text="Nombre" />
+            <TableColumn fx:id="colApellidoJugador" prefWidth="225.0" text="Apellido" />
+            <TableColumn fx:id="colDorsal" prefWidth="76.0" text="Dorsal" />
+            <TableColumn fx:id="colEquipo" prefWidth="140.0" text="Equipo" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnRegresar" layoutX="865.0" layoutY="660.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="284.0" text="Regresar" />
+      <TextField fx:id="tfApellido" layoutX="27.0" layoutY="210.0" prefHeight="25.0" prefWidth="298.0" />
+      <TextField fx:id="tfNombre" layoutX="27.0" layoutY="273.0" prefHeight="25.0" prefWidth="298.0" />
+      <ComboBox fx:id="cmbEquipo" layoutX="27.0" layoutY="338.0" prefHeight="25.0" prefWidth="298.0" />
+      <TextField fx:id="tfDorsal" layoutX="27.0" layoutY="402.0" prefHeight="25.0" prefWidth="172.0" />
+      <Button fx:id="btnGuardar" layoutX="40.0" layoutY="485.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="136.0" text="Guardar" />
+      <Button fx:id="btnEliminar" layoutX="221.0" layoutY="485.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="136.0" text="Eliminar" />
+      <Button fx:id="btnLimpiar" layoutX="131.0" layoutY="598.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0" prefWidth="136.0" text="Vaciar" />
+      <Label layoutX="27.0" layoutY="171.0" prefHeight="25.0" prefWidth="172.0" text="Apellido">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="235.0" prefHeight="25.0" prefWidth="172.0" text="Nombre">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="298.0" prefHeight="25.0" prefWidth="172.0" text="Equipo">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="363.0" prefHeight="25.0" prefWidth="172.0" text="Dorsal">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfId" editable="false" layoutX="27.0" layoutY="146.0" prefHeight="25.0" prefWidth="298.0" />
+      <Label layoutX="27.0" layoutY="107.0" prefHeight="25.0" prefWidth="172.0" text="ID">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

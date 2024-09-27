@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kevingutierrez.webapp.ligafutbol.controller.FXController.EquipamientoController">
+   <children>
+      <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../java/com/kevingutierrez/webapp/ligafutbol/image/MenuEquipamientos.png" />
+         </image></ImageView>
+      <TextField fx:id="tfEquipamientoId" layoutX="681.0" layoutY="76.0" prefHeight="22.0" prefWidth="433.0" />
+      <Button fx:id="btnBuscar" layoutX="1121.0" layoutY="71.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="43.0">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../java/com/kevingutierrez/webapp/ligafutbol/image/lupa.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <TableView fx:id="tblEquipamiento" layoutX="469.0" layoutY="119.0" onMouseClicked="#cargarTextField" prefHeight="528.0" prefWidth="695.0">
+        <columns>
+            <TableColumn fx:id="colId" prefWidth="53.0" text="ID" />
+          <TableColumn fx:id="colColor" prefWidth="91.0" text="Color" />
+          <TableColumn fx:id="colEscudo" prefWidth="137.0" text="Escudo" />
+            <TableColumn fx:id="colPatrocinador" prefWidth="235.0" text="Patrocinador" />
+            <TableColumn fx:id="colEquipo" prefWidth="178.0" text="Equipo" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnRegresar" layoutX="897.0" layoutY="666.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="266.0" text="Regresar" />
+      <ComboBox fx:id="cmbEquipo" layoutX="39.0" layoutY="226.0" prefHeight="25.0" prefWidth="319.0" />
+      <ComboBox fx:id="cmbPatrocinador" layoutX="39.0" layoutY="294.0" prefHeight="25.0" prefWidth="319.0" />
+      <TextField fx:id="tfEscudo" layoutX="38.0" layoutY="358.0" prefHeight="25.0" prefWidth="319.0" />
+      <TextField fx:id="tfColor" layoutX="38.0" layoutY="422.0" prefHeight="25.0" prefWidth="319.0" />
+      <Button fx:id="btnGuardar" layoutX="38.0" layoutY="506.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="64.0" prefWidth="150.0" text="Guardar" />
+      <Button fx:id="btnEliminar" layoutX="225.0" layoutY="506.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="64.0" prefWidth="150.0" text="Eliminar" />
+      <Button fx:id="btnLimpiar" layoutX="123.0" layoutY="615.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="64.0" prefWidth="150.0" text="Vaciar" />
+      <Label layoutX="39.0" layoutY="188.0" prefHeight="25.0" prefWidth="183.0" text="Equipo">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="251.0" prefHeight="25.0" prefWidth="183.0" text="Patrocinador">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="319.0" prefHeight="25.0" prefWidth="183.0" text="Escudo">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="383.0" prefHeight="25.0" prefWidth="183.0" text="Color">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfId" editable="false" layoutX="39.0" layoutY="163.0" prefHeight="25.0" prefWidth="319.0" />
+      <Label layoutX="38.0" layoutY="125.0" prefHeight="25.0" prefWidth="183.0" text="ID">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

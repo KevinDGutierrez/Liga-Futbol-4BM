@@ -31,9 +31,12 @@ public class Patrocinador {
     inverseJoinColumns = @JoinColumn(name = "equipos_id", referencedColumnName = "id"))
     private List<Equipo> equipo;
 
+<<<<<<< HEAD
     @Override
     public String toString(){
         return nombre;
     }
 
+=======
+>>>>>>> luisCuxun-2023518
 }
